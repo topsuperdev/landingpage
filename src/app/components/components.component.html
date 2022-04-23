@@ -1,0 +1,358 @@
+<div class="wrapper intro" 
+    style="background-image: 
+    url('/assets/img/caasius_pattern_background.jpeg'); 
+    transition: transform 5000ms ease 0s; transform: scaleX(1) scaleY(1);">
+
+        <div class="page-header section-dark">
+            <div class="filter"></div>
+            <div class="content-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <span class="main-page-headers h1" >The easiest <br/>loyalty programme <br/>in the world.</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 main-page-image">
+                            <img src="/assets/img/caasius_homepage.gif" width="100%"/>
+                        </div>
+
+                    </div>
+                    
+                    <h2 class="presentation-subtitle text-center"></h2>
+                </div>
+                <h6 class="presentation-subtitle text-left">
+                    <button type="button" class="btn btn-round" on-click="scroll(destination)">Try It Free</button>
+                </h6>
+                <div class="text-center">
+                    <img src="/assets/img/apple_wallet_google_pay.png" height="80px"/>
+                </div>
+            </div>
+            <!-- <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div> -->
+            <!-- <h6 class="category-absolute ml-auto mr-auto">
+                <button type="button" class="btn btn-danger btn-round heart" on-click="scroll(destination)"><i class="fa fa-arrow-down"></i>
+                    Design Your Wallet</button>
+            </h6> -->
+        </div>
+
+        <section #destination> </section>
+        <div class="section section-login section-dark"
+        >
+            <div class="container" id="scroll-down-form">
+
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-9 col-md-12 col-sm-12 ml-auto mr-auto">
+                                <div class="card card-register">
+                                    <h4 class="title"> Design your loyalty card</h4>
+        
+                                    <!-- <form class="register-form" #issuerProgramForm="ngForm" novalidate (ngSubmit)="save()" -->
+                                    <form class="register-form" #issuerProgramForm="ngForm" novalidate 
+                                        autocomplete="off">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+        
+                                                <label for="IssuerProgram_BackgroundColor">Background Colour *</label>
+                                                <div class="input-group form-group-no-border">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="nc-icon nc-camera-compact"></i>
+                                                        </span>
+                                                    </div>
+                
+                                                    <input [value]="issuerProgram.backgroundColor"
+                                                        [style.background]="issuerProgram.backgroundColor" class="form-control" placeholder="Background Colour"
+                                                        [(ngModel)]="issuerProgram.backgroundColor" [cpCancelButton]="true"
+                                                        #BackgroundColor="ngModel" name="BackgroundColor" minlength="7" maxlength="7"
+                                                        required [cpCancelButtonClass]="'btn btn-primary btn-xs'"
+                                                        [(colorPicker)]="issuerProgram.backgroundColor" />
+                
+                                                </div>
+                                                <div *ngIf="!BackgroundColor.valid && (BackgroundColor.dirty || BackgroundColor.touched)"
+                                                    class="alert alert-danger">
+                                                    Background colour field required
+                                                </div>
+
+                                                <label for="IssuerProgram_IssuerName">Company Name *</label>
+                                                <div class="input-group form-group-no-border">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="nc-icon nc-briefcase-24"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" #IssuerProgram_IssuerName="ngModel" id="IssuerProgram_IssuerName"
+                                                        class="form-control" placeholder="Company Name"
+                                                        [(ngModel)]="issuerProgram.issuerName" name="IssuerProgram_IssuerName"
+                                                        required />
+                                                </div>
+                                                <div *ngIf="!IssuerProgram_IssuerName.valid && (IssuerProgram_IssuerName.dirty || IssuerProgram_IssuerName.touched)"
+                                                    class="alert alert-danger">
+                                                    Company name field required
+                                                </div>
+                
+                                                <label for="IssuerProgram_ProgramName">Programme Name *</label>
+                                                <div class="input-group form-group-no-border">
+                
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="nc-icon nc-box-2"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" #ProgramName="ngModel" id="IssuerProgram_ProgramName"
+                                                        class="form-control" placeholder="Programme Name"
+                                                        [(ngModel)]="issuerProgram.programName" name="ProgramName" required />
+                                                        
+                                                    <input type="text" #LoyaltyPointLabel="ngModel" id="IssuerProgram_LoyaltyPointLabel" hidden
+                                                        class="form-control" placeholder="Loyalty Point Label"
+                                                        [(ngModel)]="issuerProgram.loyaltyPointLabel" name="LoyaltyPointLabel" value="Collected" />
+
+                                                </div>
+                                                <div *ngIf="!ProgramName.valid && (ProgramName.dirty || ProgramName.touched)"
+                                                    class="alert alert-danger">
+                                                    Programme name field required
+                                                </div>
+                                                <!-- <label for="IssuerProgram_LoyaltyPointLabel">Collected *</label>
+                                                <div class="input-group form-group-no-border">
+                
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="nc-icon nc-air-baloon"></i>
+                                                        </span>
+                                                    </div>
+                                                </div> -->
+                                                
+                                                <label for="IssuerProgram_StampCount">Maximum Stamp Required *</label>
+                                                <div class="input-group form-group-no-border">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="nc-icon nc-user-run"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="number" #StampCount="ngModel" id="IssuerProgram_StampCount"
+                                                        class="form-control" placeholder="Stamp Count"
+                                                        [(ngModel)]="issuerProgram.stampCount" name="StampCount" />
+                                                </div>
+                                                <div *ngIf="!StampCount.valid && (StampCount.dirty || StampCount.touched)"
+                                                    class="alert alert-danger">
+                                                    Fill Stamp Required field
+                                                </div>
+                                                <!-- <label for="IssuerProgram_BarcodeText">Barcode Text *</label>
+                                                <div class="input-group form-group-no-border">
+                
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="nc-icon nc-air-baloon"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" #BarcodeText="ngModel" id="IssuerProgram_BarcodeText"
+                                                        class="form-control" placeholder="Barcode Text"
+                                                        [(ngModel)]="issuerProgram.barcodeText" name="BarcodeText" minlength="3"
+                                                        maxlength="50" required />
+                                                </div>
+                                                <div *ngIf="!BarcodeText.valid && (BarcodeText.dirty || BarcodeText.touched)"
+                                                    class="alert alert-danger">
+                                                    Barcode Text required
+                                                </div> -->
+                                                <label for="IssuerProgram_ProgramUrl">Programme Logo *</label>
+                                                <div class="form-group-no-border">
+                
+                                                    <div class="form-group">
+                
+                                                        <!-- <input type="text" #ProgramName="ngModel" id="IssuerProgram_ProgramUrl"
+                                                            class="form-control" placeholder="Programme Logo Url"
+                                                            [(ngModel)]="issuerProgram.programUrl" name="IssuerProgram_ProgramUrl"
+                                                            required /> -->
+                
+                                                        <input type="file" (change)="fileChangeEvent($event)"
+                                                            style="background-color:transparent !important;color:white !important;margin: 0 auto;padding: 0;"
+                                                            id="IssuerProgram_ProgramUrl" class="form-control"
+                                                            name="IssuerProgram_ProgramUrl" minlength="5" required />
+                                                        <span class="help-block m-b-none"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8"
+                                                    style="background-color:transparent !important;color:white !important;margin: 0 auto;padding: 0;">
+                                                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                                                        [aspectRatio]="1 / 1" [resizeToWidth]="128" format="png"
+                                                        style="background-color:transparent !important;color:white !important;margin: 0 auto;padding: 0;"
+                                                        (imageCropped)="imageCroppedFile($event)">
+                                                    </image-cropper>
+                                                </div> 
+                                                <!-- <div class="col-md-4">
+                                                    <button type="button" class="btn btn-default" (click)="upload()">
+                                                        Upload
+                                                    </button>
+                                                </div> -->
+                                                <!-- <div *ngIf="!ProgramUrl.valid && (ProgramUrl.dirty || ProgramUrl.touched)"
+                                                    class="alert alert-danger">
+                                                    IssuerProgram IssuerName required
+                                                </div> -->
+                                                <label for="IssuerProgram_HeroLogoUrl">Hero Image *</label>
+                                                <div class="form-group-no-border">
+                
+                                                    <div class="form-group">
+                                                        <!-- <input type="text" #ProgramName="ngModel" id="IssuerProgram_HeroLogoUrl"
+                                                            class="form-control" placeholder="Hero Image Url"
+                                                            [(ngModel)]="issuerProgram.heroLogoUrl" name="IssuerProgram_HeroLogoUrl"
+                                                            required /> -->
+                
+                                                        <input type="file" (change)="fileChangeEvent2($event)"
+                                                            style="background-color:transparent !important;color:white !important;margin: 0 auto;padding: 0;"
+                                                            id="IssuerProgram_HeroLogoUrl" class="form-control"
+                                                            name="IssuerProgram_HeroLogoUrl" minlength="5" required />
+                                                        <span class="help-block m-b-none"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8"
+                                                    style="background-color:transparent !important;color:white !important;margin: 0 auto;padding: 0;">
+                                                    <image-cropper [imageChangedEvent]="imageChangedEvent2" [maintainAspectRatio]="true"
+                                                        [aspectRatio]="10 / 3" [resizeToWidth]="512" format="png"
+                                                        style="background-color:transparent !important;color:white !important;margin: 0 auto;padding: 0;"
+                                                        (imageCropped)="imageCroppedFile2($event)">
+                                                    </image-cropper>
+                                                </div>
+                                                <!-- <div class="col-md-4">
+                                                    <button type="button" class="btn btn-default" (click)="upload2()">
+                                                        Upload
+                                                    </button>
+                                                </div> -->
+                                                <!-- <div *ngIf="!IssuerProgram_HeroLogoUrl.valid && (IssuerProgram_HeroLogoUrl.dirty || IssuerProgram_HeroLogoUrl.touched)"
+                                                    class="alert alert-danger">
+                                                    IssuerProgram IssuerName required
+                                                </div> -->
+                                                <!-- <div class="m-checkbox-list">
+                                                    <label for="IssuerProgram_State" class="kt-checkbox">
+                                                        <input id="IssuerProgram_State" #IssuerProgram_State="ngModel" type="checkbox"
+                                                            name="State" [(ngModel)]="issuerProgram.state" />
+                                                        State
+                                                        <span></span>
+                                                    </label>
+                                                </div> -->
+                                                
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="nav-tabs-navigation">
+                                            <div class="nav-tabs-wrapper">
+                                                <ngb-tabset [justify]="'left'">
+                                                    <ngb-tab title="Google">
+                                                        <ng-template ngbTabContent>
+
+                                                            <div class="tab-content mt-5" id="walletGoogleTabContent">
+
+                                                                <div class="Wallet-root row14 Wallet-elevate Wallet-rounded" [style.background]="issuerProgram.backgroundColor" style="background-color: rgb(218, 209, 201); color: rgb(255, 255, 255);">
+                                                                    <div class="Wallet-rows-root row18">
+                                                                        <div class="Wallet-rows-root row19">
+                                                                            <img *ngIf="programLogo" id="programLogoImage" [src]="programLogo" height="50px" width="50px" style="border-radius: 50px;">
+                                                                            <img *ngIf="!programLogo" src="/assets/img/caasius-logo.png" height="50px" width="50px" style="border-radius: 50px;">
+                                                                        </div>
+                                                                        <div class="Wallet-rows-root row20">{{issuerProgram.issuerName}}</div>
+                                                                        <div class="Wallet-rows-root row21">{{issuerProgram.programName}}</div>
+                                                                    </div>
+                                                                    <div class="Wallet-rows-root row22">
+                                                                        <img *ngIf="heroImage" id="heroLogoImage"width="100%" [src]="heroImage" >
+                                                                        <img *ngIf="!heroImage" id="heroLogoImage"width="100%" src="/assets/img/default-hero.jpg">
+                                                                    </div>
+                                                                    <div class="Wallet-rows-root row23">
+                                                                        <div class="Wallet-rows-root row20">{{issuerProgram.loyaltyPointLabel}}</div>
+                                                                        <div *ngIf="issuerProgram.stampCount" class="Wallet-rows-root row24">0 / {{issuerProgram.stampCount}}</div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="Wallet-rows-root row20">
+                                                                        <img src="/assets/img/qrcode.png" height="135px" width="135px">  
+                                                                    </div>
+                                                                    
+                                                                    <div class="Wallet-rows-root row23">
+                                                                        <div class="Wallet-rows-root row24">{{issuerProgram.barcodeText}}</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+                                                    <ngb-tab title="Apple">
+                                                        <ng-template ngbTabContent>
+                                                        
+                                                            <div class="tab-content mt-5" id="walletAppleTabContent">
+
+                                                                <div class="Wallet-root row14 Wallet-elevate Wallet-rounded" [style.background]="issuerProgram.backgroundColor" style="background-color: rgb(255, 255, 255); color: rgb(255, 255, 255);">
+                                                                    <div class="Wallet-rows-root row118">
+                                                                        <div class="col-2 Wallet-rows-root row119">
+                                                                            <img *ngIf="programLogo" id="programLogoImage" [src]="programLogo" height="36px" >
+                                                                            <img *ngIf="!programLogo" src="/assets/img/caasius-logo.png" height="36px">
+                                                                        
+                                                                        </div>
+                                                                        <div class="col-6 mt-6">
+                                                                        </div>
+                                                                        <div class="col-4 Wallet-rows-root row123">
+                                                                            <div class="Wallet-rows-root row124">{{issuerProgram.loyaltyPointLabel}}</div>
+                                                                            <div class="Wallet-rows-root row125">0 / {{issuerProgram.stampCount}}</div>
+                                                                        
+                                                                        </div>
+                                                                    </div>
+                                                                    <div *ngIf="!heroImage" class="Wallet-rows-root row22" 
+                                                                        style="background-image: url('/assets/img/default-hero.jpg'); 
+                                                                        background-repeat: no-repeat;
+                                                                        background-size: 300px 90px;">
+                                                                        <div class="Wallet-rows-root row136">0</div>
+                                                                        <div class="Wallet-rows-root row135">of {{issuerProgram.stampCount}} stamps</div>
+                                                                    </div>
+                                                                    <div *ngIf="heroImage" class="Wallet-rows-root row22">
+                                                                        <img id="heroImage" [src]="heroImage" width="300px" >
+                                                                    </div>
+                                                                    <div class="row Wallet-rows-root row120">
+                                                                        <div class="col-6">
+                                                                            <div class="Wallet-rows-root row121">COMPANY</div>
+                                                                            <div class="Wallet-rows-root row126">{{issuerProgram.issuerName}}</div>
+                                                                        </div>
+                                                                        <div class="">
+                                                                            <div class="Wallet-rows-root row121">PROGRAMME</div>
+                                                                            <div class="Wallet-rows-root row126">{{issuerProgram.programName}}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="Wallet-rows-root row133">
+                                                                        <div class=" Wallet-rows-root row130">
+                                                                            <img src="/assets/img/qrcode.png" height="135px" width="135px">
+                                                                            <div class="row Wallet-rows-root row134">{{issuerProgram.barcodeText}}</div>
+                                                                        </div>                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+                                                </ngb-tabset>
+                                            </div>
+                                        </div>
+                                        
+                                        <br/>
+
+                                    </div>
+                                </div>
+                                <a href="https://app.caasius.com/account/select-edition"
+                                        class="btn btn-round">Register Now</a>
+                                    </form>
+                            </div>
+                        
+                    </div>
+                    
+                    <!-- <div class="col-lg-4 col-md-8 col-sm-12 ml-auto mr-auto">
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <span class="main-page-headers2-1 h1" >engage.</span>
+                            </div>
+                            
+                            <div class="col-12">
+                                <span class="main-page-headers2-2 h1" >reward.</span>
+                            </div>
+                            
+                            <div class="col-12">
+                                <span class="main-page-headers2-3 h1" >grow.</span>
+                            </div>
+                        
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+</div>
